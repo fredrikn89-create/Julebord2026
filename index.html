@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guttas Julebord 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* VOICE: festlig og varm, julebordsplakaten selv
+   IDEA: Fredriks plakat er siden; programtabellen er byttet ut med en levende, trykkbar tabell
+   PICTURE: originalbildet i full bredde, med tabellen lagt nøyaktig over pergamentet
+   COLOUR and TYPE: bildets brune, røde og gull; Alegreya som matcher plakatens serif
+   LAYOUT: plakaten midtstilt, uskarp kopi av bildet bak, beskrivelse i et kort som åpnes ved trykk */
+:root{color-scheme:dark;--ink:#2a1609;--red:#8e1b17;--red2:#a8231c;--parch:#f4e3bf;--muted:#6b4a2f;--line:#7a5430}
+:root[data-theme=light],:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;min-height:100vh;background:#1a0c06;color:var(--ink);font:16px/1.5 Alegreya,Georgia,serif;overflow-x:clip}
+.bg{position:fixed;inset:-40px;background:url(bakgrunn.jpg) center/cover;filter:blur(28px) brightness(.45);z-index:0}
+main{position:relative;z-index:1;max-width:680px;margin:0 auto;padding:clamp(0px,2vw,24px) 0}
+.poster{position:relative;container-type:inline-size;box-shadow:0 20px 60px rgba(0,0,0,.6);border-radius:clamp(0px,1.5vw,10px);overflow:hidden}
+.poster img{display:block;width:100%;height:auto}
+.poster h1{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+/* tabellen ligger over den gamle tabellen i bildet (1024x1536) */
+.prog{position:absolute;left:8.2%;width:85.4%;top:41.6%;height:32.2%;display:grid;grid-template-rows:auto repeat(8,minmax(0,1fr)) auto;
+ background:radial-gradient(ellipse at 50% 45%,#f7e9c9 30%,#efdab0 100%);border:1.5px solid var(--line);border-radius:3px;box-shadow:0 0 12px 6px rgba(240,220,180,.85);
+ font-size:clamp(10.5px,2.55cqw,17px);line-height:1.15}
+.row{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1.05fr) minmax(0,.85fr) 1.6em;align-items:center;column-gap:.6em;padding:0 .7em}
+.hd{background:linear-gradient(var(--red2),var(--red));color:#fbe9cf;font-weight:700;padding-block:.5em}
+.item{width:100%;height:100%;border:0;border-top:1px solid var(--line);background:transparent;color:inherit;font:inherit;text-align:left;cursor:pointer}
+.item:hover,.item:focus-visible{background:rgba(168,35,28,.1)}
+.item:focus-visible{outline:2px solid var(--red2);outline-offset:-2px}
+.item span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.what{font-weight:700}.who{color:var(--red);font-weight:600}
+.plus{justify-self:end;width:1.35em;height:1.35em;border-radius:50%;display:grid;place-items:center;background:var(--red);color:#fbe9cf;font-weight:700;font-size:.9em;line-height:1}
+.hint{text-align:center;font-style:italic;color:var(--muted);font-size:.8em;padding:.25em 0 .3em;border-top:1px solid var(--line)}
+/* beskrivelse */
+.veil{position:fixed;inset:0;z-index:5;display:grid;place-items:center;padding:16px;background:rgba(15,6,2,.6);opacity:0;pointer-events:none;transition:opacity .2s}
+.veil.on{opacity:1;pointer-events:auto}
+.card{position:relative;width:min(460px,100%);max-height:85vh;overflow:auto;padding:26px 24px 22px;border-radius:8px;color:var(--ink);
+ background:radial-gradient(ellipse at 50% 30%,#f8ebcd 40%,#ead3a3 100%);box-shadow:0 24px 60px rgba(0,0,0,.6),inset 0 0 30px rgba(150,95,35,.3);
+ transform:translateY(12px) scale(.97);transition:transform .2s}
+.veil.on .card{transform:none}
+@media(prefers-reduced-motion:reduce){.veil,.card{transition:none}}
+.card .when{margin:0;color:var(--muted);font-style:italic;font-size:15px}
+.card h2{margin:2px 0 4px;font-size:clamp(26px,6vw,32px);line-height:1.1;color:var(--red)}
+.card .by{margin:0 0 12px;font-weight:600}
+.card .txt{margin:0;font-size:17px}
+.nav{display:flex;justify-content:space-between;gap:10px;margin-top:20px}
+.btn{min-height:44px;padding:8px 16px;border-radius:999px;border:1.5px solid var(--red);background:transparent;color:var(--red);font:600 15px Alegreya,serif;cursor:pointer}
+.btn:hover{background:var(--red);color:#fbe9cf}
+.btn:disabled{opacity:.35;pointer-events:none}
+.btn:focus-visible,.x:focus-visible{outline:3px solid #e0a83a;outline-offset:2px}
+.x{position:absolute;top:8px;right:8px;width:44px;height:44px;border:0;border-radius:50%;background:transparent;color:var(--red);font-size:28px;line-height:1;cursor:pointer}
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true"></div>
+<main>
+  <div class="poster">
+    <h1>Guttas Julebord 2026</h1>
+    <img src="bakgrunn.jpg" width="1024" height="1536" alt="Julebordsplakat med treskilt, julekuler, lys og gaver">
+    <section class="prog" aria-label="Kveldens program">
+      <div class="row hd" aria-hidden="true"><span>Når</span><span>Hva</span><span>Hvem</span><span></span></div>
+      <div id="rows" style="display:contents"></div>
+      <div class="hint">Trykk på et punkt for å lese mer</div>
+    </section>
+  </div>
+</main>
+
+<div class="veil" id="veil" aria-hidden="true">
+  <div class="card" role="dialog" aria-modal="true" aria-labelledby="dTitle">
+    <button class="x" id="dClose" type="button" aria-label="Lukk">×</button>
+    <p class="when" id="dWhen"></p>
+    <h2 id="dTitle"></h2>
+    <p class="by" id="dWho"></p>
+    <p class="txt" id="dTxt"></p>
+    <div class="nav">
+      <button class="btn" id="dPrev" type="button">‹ Forrige</button>
+      <button class="btn" id="dNext" type="button">Neste ›</button>
+    </div>
+  </div>
+</div>
+
+<script>
+{
+/* ====== REDIGER PROGRAMMET HER ======
+   når / hva / hvem vises i tabellen, tekst vises når man trykker på punktet. */
+const PROGRAM = [
+  {når:"Når vi setter oss", hva:"Introduksjon", hvem:"Toastmaster",
+   tekst:"Toastmaster ønsker velkommen, går gjennom kveldens regler og minner alle på at skåltaler er obligatorisk og at ingen slipper unna. Glassene fylles, og julebordet er offisielt i gang."},
+  {når:"Etter første porsjon", hva:"Secret Santa", hvem:"Sveinung",
+   tekst:"Sveinung tar på seg nissehua og deler ut gavene. Ingen vet hvem som har kjøpt til hvem, men alle vet hvem som kjøpte den verste gaven i fjor. Pakkene åpnes én etter én, og gjetting er lov."},
+  {når:"Etter andre porsjon", hva:"Julequiz", hvem:"Thor",
+   tekst:"Thor har laget en quiz med spørsmål om jul, gamle minner og pinlige historier fra gjengen. Lagene settes sammen på stedet. Juksing straffes med ekstra oppvask."},
+  {når:"Etter dessert", hva:"Takk for maten tale", hvem:"Marius",
+   tekst:"Marius reiser seg, klinger i glasset og takker for maten på vegne av alle. Forventningene er høye: talen bør inneholde minst ett rim, én rørende setning og én vits som bare halve bordet forstår."},
+  {når:"Etter/til Café Avec", hva:"Roast", hvem:"André",
+   tekst:"Med kaffe og avec på bordet er det duket for kveldens roast. André har samlet inn historier hele året. Ingen er trygge, og alt som sies rundt bordet blir rundt bordet."},
+  {når:"Etter liten pause", hva:"Underholdning", hvem:"Olav",
+   tekst:"Olav står for underholdningen. Nøyaktig hva det blir, er hemmelig, men det er lovet at det blir minneverdig. Hold mobilen klar, eller kanskje helst ikke."},
+  {når:"Etter liten pause", hva:"Juledikt", hvem:"Mats",
+   tekst:"Mats framfører årets juledikt, skrevet spesielt for anledningen. Forvent rim på «julebord» og «ingen ord», og et par strofer som får noen av gutta til å rødme."},
+  {når:"Etter Juledikt", hva:"Postludium", hvem:"Toastmaster",
+   tekst:"Toastmaster runder av den formelle delen av kvelden med en siste skål og en kort oppsummering. Etter dette er det fri flyt, og kvelden er fortsatt ung."}
+];
+/* ====== SLUTT PÅ REDIGERING ====== */
+
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const $=id=>document.getElementById(id);
+const rows=$('rows');
+rows.innerHTML=PROGRAM.map((p,i)=>`<button type="button" class="row item" data-i="${i}" aria-haspopup="dialog"><span class="when">${esc(p.når)}</span><span class="what">${esc(p.hva)}</span><span class="who">${esc(p.hvem)}</span><span class="plus" aria-hidden="true">+</span></button>`).join('');
+const prog=document.querySelector('.prog');
+prog.style.gridTemplateRows=`auto repeat(${PROGRAM.length},minmax(0,1fr)) auto`;
+
+const veil=$('veil');let cur=-1,last=null;
+const show=i=>{cur=i;const p=PROGRAM[i];$('dWhen').textContent=p.når;$('dTitle').textContent=p.hva;$('dWho').textContent='Ved '+p.hvem;$('dTxt').textContent=p.tekst;$('dPrev').disabled=i===0;$('dNext').disabled=i===PROGRAM.length-1};
+const open=i=>{last=document.activeElement;show(i);veil.classList.add('on');veil.setAttribute('aria-hidden','false');$('dClose').focus({focusVisible:false})};
+const close=()=>{veil.classList.remove('on');veil.setAttribute('aria-hidden','true');cur=-1;if(last)last.focus()};
+rows.addEventListener('click',e=>{const b=e.target.closest('.item');if(b)open(+b.dataset.i)});
+$('dClose').onclick=close;
+$('dPrev').onclick=()=>cur>0&&show(cur-1);
+$('dNext').onclick=()=>cur<PROGRAM.length-1&&show(cur+1);
+veil.addEventListener('click',e=>{if(e.target===veil)close()});
+document.addEventListener('keydown',e=>{if(cur<0)return;if(e.key==='Escape')close();if(e.key==='ArrowLeft'&&cur>0)show(cur-1);if(e.key==='ArrowRight'&&cur<PROGRAM.length-1)show(cur+1)});
+}
+</script>
+</body>
+</html>
